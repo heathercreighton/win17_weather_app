@@ -14,7 +14,19 @@
     </div>
 </div>
 
-
+<div class="container">
+	<div class="row">
+		<% if !@cities.blank? %>
+		<ul>
+			<% @cities.each do |city| %>
+				<div class="col-xs-2"
+				<li><%= link_to "#{city.city}, #{city.state}",index_path(city: city.city, state: city.state) %> </li>
+			</div>
+			<% end %>
+		</ul>	
+		<% end %>	
+	</div>
+</div>
 
 <!-- Our response from wunderground's API -->
 <div class="row">
@@ -29,7 +41,7 @@
       <div class="row">
         <div class="col-md-7">
 	  <p><em>What's the weather like?</em></p>
-          <p>
+    <p>
 	    Temperature is: <%= @temp_f %>° / <%= @temp_c %>° 
 	  </p>
 	  <p>
@@ -48,7 +60,7 @@
 
     <% else %>
      
-     <p>Error: Please enter a valid request. <%= @error %> </p> 
+     <p><%= @error %> </p> 
 <% end %>
     </div>
   </div>
